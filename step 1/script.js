@@ -13,3 +13,14 @@ undefined;
 var obj = {};
 
 var showType = typeof(null);
+
+//alert('hello')
+
+// let answer = confirm('why?');
+
+// console.log(answer);
+
+let isChecked = true,
+    isPr = true;
+
+console.log(isChecked & isPr);
