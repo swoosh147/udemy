@@ -11,7 +11,7 @@ btn.addEventListener('click', function() {
     console.log('box.style.height ' + box.style.height);
     console.log('box.scrollHeight ' + box.scrollHeight);
 
-    // console.log(box.scrollTop);
+    console.log(box.scrollTop);
 
     console.log(box.getBoundingClientRect());
 
