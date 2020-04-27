@@ -44,20 +44,13 @@ window.addEventListener('DOMContentLoaded', function() {
 
     // Timer
 
-    let deadLine = '2020-04-23';
+    let deadLine = '2020-04-27';
 
     function getTimeRemaining(endTime) {
         let t = Date.parse(endTime) - Date.parse(new Date()),
             hours = Math.floor(t / (1000 * 60 * 60)),
             minutes = Math.floor((t / 1000 / 60) % 60),
             seconds = Math.floor((t / 1000) % 60);
-        if (t.total <= 0) {
-            clearInterval(timeInterval);
-            hours.textContent = '00';
-            minutes.textContent = '00';
-            seconds.textContent = '00';
-        }
-
 
         return {
             'totol': t,
@@ -92,12 +85,57 @@ window.addEventListener('DOMContentLoaded', function() {
 
             if (t.totol < 0) {
                 clearInterval(timeInterval);
+                hours.textContent = '00';
+                minutes.textContent = '00';
+                seconds.textContent = '00';
             }
 
         }
     }
 
     setClock('timer', deadLine);
+
+
+    // Modal
+    let more = document.querySelector('.more'),
+        overlay = document.querySelector('.overlay'),
+        close = document.querySelector('.popup-close'),
+        moreOnTabs = document.querySelectorAll('.description-btn'),
+        info = document.querySelector('.info');
+    console.log(info);
+    more.addEventListener('click', function() {
+        overlay.style.display = 'block';
+        this.classList.add('more-splash');
+        document.body.style.overflow = 'hidden';
+    });
+
+    close.addEventListener('click', function() {
+        overlay.style.display = 'none';
+        more.classList.remove('more-splash');
+        document.body.style.overflow = '';
+    });
+
+    // moreOnTabs[0].addEventListener('click', function() {
+    //     overlay.style.display = 'block';
+    //     this.classList.add('more-splash');
+    //     document.body.style.overflow = 'hidden';
+    // });
+
+    info.addEventListener('click', function() {
+        target = event.target;
+        if (target && target.classList.contains('description-btn')) {
+            for (let i = 0; i <= moreOnTabs.length; i++) {
+                if (target == moreOnTabs[i]) {
+                    overlay.style.display = 'block';
+                    this.classList.add('more-splash');
+                    document.body.style.overflow = 'hidden';
+                    break;
+
+                }
+            }
+
+        }
+    });
 
 
 });
