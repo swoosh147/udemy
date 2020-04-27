@@ -115,6 +115,10 @@ window.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = '';
     });
 
+
+    //Bind the modal window to the “Learn more” buttons in the tabs.
+
+
     // moreOnTabs[0].addEventListener('click', function() {
     //     overlay.style.display = 'block';
     //     this.classList.add('more-splash');
