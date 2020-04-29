@@ -16,13 +16,14 @@ let inputRUB = document.getElementById('rub'),
 
 inputRUB.addEventListener('input', function() {
     let request = new XMLHttpRequest();
+    console.log(request);
     // request.open(method, url, async, login, password);
     request.open('GET', 'current.json');
     request.setRequestHeader('Content-type', 'application/json', 'charset=utf-8');
     request.send();
 
     request.addEventListener('readystatechange', function() {
-        if (request.readyState === 4 & request.status == 200) {
+        if (request.readyState === 4 && request.status == 200) {
             let data = JSON.parse(request.response);
 
             inputUSD.value = inputRUB.value / data.usd;
@@ -34,4 +35,16 @@ inputRUB.addEventListener('input', function() {
 
 inputUSD.addEventListener('input', function() {
     let request = new XMLHttpRequest();
+    request.open('GET', 'current.json');
+    request.setRequestHeader('Content-type', 'application/json', 'charset=utf-8');
+    request.send();
+
+    request.addEventListener('readystatechange', function() {
+        if (request.readyState === 4 && request.status == 200) {
+            let data = JSON.parse(request.response);
+            inputRUB.value = inputUSD.value / data.rub;
+        } else {
+            inputRUB.value = "Что-то пошло не так!";
+        }
+    });
 });
