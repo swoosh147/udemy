@@ -1,3 +1,4 @@
+' use strict ';
 // let options = {
 //     width: 1600,
 //     height: 500,
