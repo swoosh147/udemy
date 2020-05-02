@@ -50,18 +50,34 @@ inputRUB.addEventListener('input', function() {
 //     });
 // });
 
-// inputUSD.addEventListener('input', function() {
-//     let request = new XMLHttpRequest();
-//     request.open('GET', 'current.json');
-//     request.setRequestHeader('Content-type', 'application/json', 'charset=utf-8');
-//     request.send();
+inputUSD.addEventListener('input', function() {
+    function catchData1() {
+        return new Promise(function(resolve, reject) {
+            let request = new XMLHttpRequest();
+            request.open('GET', 'current.json');
+            request.setRequestHeader('Content-type', 'application/json', 'charset=utf-8');
+            request.send();
+            request.onload = function() {
+                (request.readyState === 4 && request.status == 200) ? resolve(this.response): reject();
+            };
+        });
+    }
 
-//     request.addEventListener('readystatechange', function() {
-//         if (request.readyState === 4 && request.status == 200) {
-//             let data = JSON.parse(request.response);
-//             inputRUB.value = inputUSD.value / data.rub;
-//         } else {
-//             inputRUB.value = "Что-то пошло не так!";
-//         }
-//     });
-// });
+    catchData1()
+        .then(response => {
+            console.log(response);
+            let data = JSON.parse(response);
+            inputRUB.value = inputUSD.value / data.rub;
+        })
+        .then(() => console.log('usdParsing'))
+        .catch(() => inputUSD.value = "Что-то пошло не так!")
+
+    // request.addEventListener('readystatechange', function() {
+    //     if (request.readyState === 4 && request.status == 200) {
+    //         let data = JSON.parse(request.response);
+    //         inputRUB.value = inputUSD.value / data.rub;
+    //     } else {
+    //         inputRUB.value = "Что-то пошло не так!";
+    //     }
+    // });
+});
