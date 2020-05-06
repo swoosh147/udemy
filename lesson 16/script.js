@@ -263,6 +263,12 @@ window.addEventListener('DOMContentLoaded', function() {
         } else {
             totalValue.innerHTML = total;
         }
+
+        // additional task. bug fix
+        if (restDays.value == '' || person.value == '') {
+            totalValue.innerHTML = '0';
+        }
+
     });
 
     restDays.addEventListener('change', function() {
@@ -274,6 +280,12 @@ window.addEventListener('DOMContentLoaded', function() {
         } else {
             totalValue.innerHTML = total;
         }
+
+        // additional task. bug fix
+        if (restDays.value == '' || person.value == '') {
+            totalValue.innerHTML = '0';
+        }
+
     });
 
     place.addEventListener('change', function() {
