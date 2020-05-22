@@ -36,7 +36,11 @@ class AutoSlider extends Slider {
     }
 }
 
-const slider = new AutoSlider(500, 500, 4, true);
+// const slider = new AutoSlider(500, 500, 4, true);
 
-slider.whoAmI();
-slider.play();
+// slider.whoAmI();
+// slider.play();
+
+export { button };
+
+export default Slider;
