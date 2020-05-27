@@ -2,31 +2,34 @@ import React, {Component} from 'react';
 import './post-list-item.css';
 
 export default class PostListItem extends Component{
-    constructor(props){
-        super(props);
-        this.state={
-            important: false,
-            like: false
-        }
-        this.onImportant = this.onImportant.bind(this);
-        this.onLike = this.onLike.bind(this);
-    }
+//    Удалил конструктор и 2 функции, потому что пропсы я уже получаю напрямую, а onImportant и onLiked заменились на onToggleImportant
+//    и onToggleLiked.
 
-    onImportant(){
-        this.setState(({important}) => ({
-            important:!important
-        }))
-    }
+    // constructor(props){
+    //     super(props);
+    //     this.state={
+    //         important: false,
+    //         like: false
+    //     }
+    //     this.onImportant = this.onImportant.bind(this);
+    //     this.onLike = this.onLike.bind(this);
+    // }
 
-    onLike(){
-        this.setState(({like}) => ({
-            like:!like
-        }))
-    }
+    // onImportant(){
+    //     this.setState(({important}) => ({
+    //         important:!important
+    //     }))
+    // }
+
+    // onLike(){
+    //     this.setState(({like}) => ({
+    //         like:!like
+    //     }))
+    // }
 
     render(){
-const {label, onDelete} = this.props;
-const {important, like} = this.state;
+const {label, onDelete, onToggleImportant, onToggleLiked, important, like} = this.props;
+// const {important, like} = this.state; удалена, так как теперь нет стейта, нет смысла получать с него какие-то данные
         let classNames = 'app-list-item d-flex justify-content-between';
 
         if(important){
@@ -41,11 +44,11 @@ const {important, like} = this.state;
             <div className={classNames}>
             <span 
             className="app-list-item-label"
-            onClick={this.onLike}>
+            onClick={onToggleLiked}>
                 {label}
             </span>
             <div className="d-flex justify-content-center allign-items-center">
-                <button type='button' className="btn-star btn-sm" onClick={this.onImportant}>
+                <button type='button' className="btn-star btn-sm" onClick={onToggleImportant}>
                     <i className="fa fa-star"></i>
                 </button>
                 <button 
