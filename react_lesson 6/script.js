@@ -35,6 +35,22 @@ class GotService{
     getCharacter(id){
         return this.getResource(`/characters/${id}`);
     }
+
+    getAllBooks() {
+        return this.getResource(`/books/`);
+    }
+    
+    getBook(id) {
+        return this.getResource(`/books/${id}/`);
+    }
+
+    getAllHouses() {
+        return this.getResource(`/houses/`);
+    }
+    
+    getHouse(id) {
+        return this.getResource(`/houses/${id}/`);
+    }
 }
 
 const got = new GotService();
@@ -45,6 +61,18 @@ got.getAllCharacters()
     });
 
 got.getCharacter(130)
+    .then(res => console.log(res));
+
+got.getBook(3)
+    .then(res => console.log(res));
+
+got.getAllBooks()
+    .then(res => console.log(res));
+
+got.getHouse(5)
+    .then(res => console.log(res));
+
+got.getAllHouses()
     .then(res => console.log(res));
 
 // const getResource = async (url) => {
