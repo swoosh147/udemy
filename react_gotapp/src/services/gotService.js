@@ -43,6 +43,19 @@ export default class GotService {
         return this._transformHouse(house);
     }
 
+    isSet(data) {
+        if (data) {
+            return data
+        } else {
+            return 'no data :('
+        }
+    }    
+    
+    _extractId = (item) => {
+        const idRegExp = /\/([0-9]*)$/;
+        return item.url.match(idRegExp)[1];
+    }
+
     _transformCharacter(char){
         return {
             name: char.name,

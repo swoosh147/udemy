@@ -1,0 +1,11 @@
+{
+    "extends": "airbnb",
+    "rules": {
+      "react/prefer-stateless-function": "off",
+      "no-undef": "off",
+      "no-use-before-define": "off",
+      "no-param-reassign":"off",
+      "no-console":"off",
+      "react/prop-types": 0
+    }
+  }

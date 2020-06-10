@@ -5,15 +5,10 @@ import CharDetails from '../charDetails';
 import ErrorMessage from '../error';
 
 export default class CharacterPage extends Component {
-    state = {
-        selectedCahar:130,
-        error: false
-    }
 
-    componentDidCatch(){
-        this.setState({
-            error: true
-        })
+    state = {
+        selectedChar: 130,
+        error: false
     }
 
     onCharSelected = (id) => {
@@ -22,21 +17,27 @@ export default class CharacterPage extends Component {
         })
     }
 
+    componentDidCatch() {
+        this.setState({
+            error: true
+        })
+    }
 
-    render(){
-        if(this.state.error){
+    render() {
+
+        if(this.state.error) {
             return <ErrorMessage/>
         }
-        return (
 
-    <Row>
-            <Col md='6'>
-            <ItemList onCharSelected={this.onCharSelected}/>
-        </Col>
-        <Col md='6'>
-            <CharDetails charId={this.state.selectedChar} />
-        </Col>
-    </Row>
+        return (
+            <Row>
+                <Col md='6'>
+                    <ItemList onCharSelected={this.onCharSelected}/>
+                </Col>
+                <Col md='6'>
+                    <CharDetails charId = {this.state.selectedChar} />
+                </Col>
+            </Row>
         )
     }
 }
