@@ -1,68 +1,50 @@
 import React, {Component} from 'react';
 import './itemList.css';
-import ErrorMessage from '../error';
-import Spinner from '../spinner/';
-
+import Spinner from '../spinner';
 
 export default class ItemList extends Component {
 
     state = {
-        itemList: null,
-        error: false
+        itemList: null
     }
+
     componentDidMount() {
         const {getData} = this.props;
-        
+
         getData()
-            .then((itemList) => {
+            .then( (itemList) => {
                 this.setState({
-                    itemList,
-                    error: false
-                });
+                    itemList
+                })
             })
-            .catch(() => {this.onError()});
     }
-    componentDidCatch(){
-        this.setState({
-            itemList: null,
-            error: true
-        })
-    }
-    onError(status){
-        this.setState({
-            itemList: null,
-            error: true
-        })
-    }
+
     renderItems(arr) {
         return arr.map((item) => {
-            const {id, name} = item;
+            const {id} = item;
+
             const label = this.props.renderItem(item);
+
             return (
-                <li
+                <li 
                     key={id}
                     className="list-group-item"
-                    onClick={() => this.props.onCharSelected(id)}
-                    >
-                    {name}
+                    onClick={ () => this.props.onItemSelected(id)}>
+                    {label}
                 </li>
             )
         })
     }
 
-
     render() {
-        const {itemList, error} = this.state;
+        const {itemList} = this.state;
 
-        if(error){
-            return <ErrorMessage/>
-        }
-
-        if(!itemList) {
+        if (!itemList) {
             return <Spinner/>
         }
 
         const items = this.renderItems(itemList);
+
 
         return (
             <ul className="item-list list-group">

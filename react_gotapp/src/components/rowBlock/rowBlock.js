@@ -1,8 +1,17 @@
 import React from 'react';
-import {Col, Row, Container} from 'reactstrap';
+import {Col, Row} from 'reactstrap';
 
-const RowBlock = () => {
-
+const RowBlock = ({left, right}) => {
+    return (
+        <Row>
+            <Col md='6'>
+                {left}
+            </Col>
+            <Col md='6'>
+                {right}
+            </Col>
+        </Row>
+    )
 }
 
 export default RowBlock;
