@@ -57,6 +57,8 @@ export default class App extends Component {
                                 onClick={this.toggleRandomChar}>Toggle random character</button>
                             </Col>
                         </Row>
+                        {/* add test for new button */}
+                        {/* <Route path="/" component={() => <h1>Welcome page test</h1>} /> */}
                         <Route path='/' component={() => <h1>Welcome to GOT DB</h1>} exact/>
                         <Route path='/characters' component={CharacterPage} />
                         <Route path='/books' component={BooksPage} exact/>
