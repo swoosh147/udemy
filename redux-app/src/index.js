@@ -1,4 +1,6 @@
 import {createStore} from 'redux';
+import {inc, dec, rnd} from './actions';
+import reduser from './reduser'
 
 console.log('Hello');
 
