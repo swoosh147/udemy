@@ -35,6 +35,10 @@ const dec = () => ({type: 'DEC'});
 const rnd = (value) => ({type: 'RND', value});
 
 const store = createStore(reduser);
+const {dispatch} = store;
+const incDispatch = () => dispatch(inc());
+const decDispatch = () => dispatch(dec());
+const rndDispatch = (value) => dispatch(rnd(value));
 
 store.subscribe(() => {
   console.log(store.getState());
@@ -48,17 +52,13 @@ store.subscribe(() => {
 // store.dispatch({type: 'INC'});
 // console.log(store.getState());
 
-document.getElementById('inc').addEventListener('click', () => {
-  store.dispatch(inc());
-})
+document.getElementById('inc').addEventListener('click', incDispatch)
 
-document.getElementById('dec').addEventListener('click', () => {
-  store.dispatch(dec());
-})
+document.getElementById('dec').addEventListener('click', decDispatch)
 
 document.getElementById('rnd').addEventListener('click', () => {
   const value = Math.floor(Math.random() * 10);
-  store.dispatch(rnd(value));
+  rndDispatch(value)
 })
 
 const update = () =>{
