@@ -1,6 +1,6 @@
 export default class PlantService {
     constructor() {
-        this._apiBase = 'https://trefle.io/api';
+        this._apiBase = 'https://trefle.io/api/v1';
         this._token = 'ZlBkRy8renVwb1YyVW10SXk3R3k4UT09';
     }
 
@@ -20,7 +20,7 @@ export default class PlantService {
     }
 
     getPlant = async (id) => {
-        const res = await this.getResource(`/plants/${id}`);
+        const res = await this.getResource(`/plants/${id}/`);
         return res
     }
 
@@ -28,8 +28,8 @@ export default class PlantService {
 
 const plt = new PlantService();
 
-// plt.getAllPlants()
-// .then(res => console.log(res))
+plt.getAllPlants()
+.then(res => console.log(res))
 
-plt.getAllPlants(88235)
+plt.getAllPlants(101913)
 .then(res => console.log(res))
