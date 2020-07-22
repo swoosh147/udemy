@@ -31,5 +31,5 @@ const plt = new PlantService();
 plt.getAllPlants()
 .then(res => console.log(res))
 
-plt.getAllPlants(101913)
+plt.getPlant(376742)
 .then(res => console.log(res))
