@@ -5,7 +5,7 @@ export default class PlantService {
     }
 
     getResource = async (url) => {
-        const res = await fetch(`${this._apiBase}${url}?token=${this._token}`);
+        const res = await fetch(`${this._apiBase}${url}?token=${this._token}`, {mode: 'no-cors'});
     
         if (!res.ok) {
           throw new Error(`Could not fetch ${url}` +
@@ -23,6 +23,96 @@ export default class PlantService {
         const res = await this.getResource(`/plants/${id}/`);
         return res
     }
+
+// getAllKingdoms = async () => {
+
+    //     return res
+    // }
+
+    // getKingdom = async () => {
+        
+    //     return res
+    // }
+
+    // getAllSubkingdoms = async () => {
+                
+    //     return res
+    // }
+
+    // getSubkingdom = async () => {
+                        
+    //     return res
+    // }
+
+    // getAllDivisions = async () => {
+                
+    //     return res
+    // }
+
+    // getDivision = async () => {
+                        
+    //     return res
+    // }
+
+    // getAllDivisionClasses = async () => {
+        
+    //     return res
+    // }
+
+    // getDivisionClass = async () => {
+                
+    //     return res
+    // }
+
+    // getAllDivisionOrders = async () => {
+        
+    //     return res
+    // }
+
+    // getDivisionOrder = async () => {
+                
+    //     return res
+    // }
+
+    // getAllFamilies = async () => {
+        
+    //     return res
+    // }
+
+    // getFamily = async () => {
+                
+    //     return res
+    // }
+
+    // getAllGenus = async () => {
+        
+    //     return res
+    // }
+
+    // getGen = async () => {
+                
+    //     return res
+    // }
+
+    // getAllSpecies = async () => {
+        
+    //     return res
+    // }
+
+    // getSpecies = async () => {
+                
+    //     return res
+    // }
+
+    // getAllDistributions = async () => {
+        
+    //     return res
+    // }
+
+    // getDistribution = async () => {
+                
+    //     return res
+    // }
 
 }
 
