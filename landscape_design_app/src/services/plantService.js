@@ -4,14 +4,24 @@ export default class PlantService {
         this._token = 'ZlBkRy8renVwb1YyVW10SXk3R3k4UT09';
     }
 
-    getResource = async (url) => {
-        const res = await fetch(`${this._apiBase}${url}?token=${this._token}`, {mode: 'no-cors'});
+
+    // getResource = async (url) => {
+    //     const res = await fetch(`${this._apiBase}${url}?token=${this._token}`,
+    // {
+    //     // mode: 'no-cors',
+    //     headers: ('Authorization', `Basic ${this._token}`)
+    // });
     
-        if (!res.ok) {
-          throw new Error(`Could not fetch ${url}` +
-            `, received ${res.status}`);
-        }
-        return await res.json();
+    //     if (!res.ok) {
+    //       throw new Error(`Could not fetch ${url}` +
+    //         `, received ${res.status}`);
+    //     }
+    //     return await res.json();
+    // }
+
+    getResource = async (url) => {
+          const res = await fetch(`https://cors-anywhere.herokuapp.com/${this._apiBase}${url}?token=${this._token}`);
+          return await res.json();
     }
 
     getAllPlants = async () => {
@@ -19,10 +29,10 @@ export default class PlantService {
         return res
     }
 
-    getPlant = async (id) => {
-        const res = await this.getResource(`/plants/${id}/`);
-        return res
-    }
+    // getPlant = async (id) => {
+    //     const res = await this.getResource(`/v1/plants/${id}/`);
+    //     return res
+    // }
 
 // getAllKingdoms = async () => {
 
@@ -121,5 +131,5 @@ const plt = new PlantService();
 plt.getAllPlants()
 .then(res => console.log(res))
 
-plt.getPlant(376742)
-.then(res => console.log(res))
+// plt.getPlant(376742)
+// .then(res => console.log(res))
