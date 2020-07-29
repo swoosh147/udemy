@@ -1,80 +1,16 @@
 import {createStore} from 'redux';
-import {inc, dec, rnd} from './actions';
-import reduser from './reduser'
+import {Provider} from 'react-redux';
+import reducer from './reducer';
+import React from 'react'; 
+import ReactDOM from 'react-dom';
+import App from './components/app';
+import './style.css';
 
-console.log('Hello');
+const store = createStore(reducer);
 
-// const initialState = 0;
-
-const reduser = (state = 0, action) => {
-//   if(action.type === 'INC'){
-//     return state + 1;
-//   }
-//   return 0;
-// }
-    switch(action.type){
-      case 'INC':
-        return state + 1;
-      case 'DEC':
-        return state - 1;
-      case 'RND':
-        return state + action.value;
-      default:
-        return state;
-    }
-}
-
-// const inc = () =>{
-//   return {
-//     type: 'INC'
-//   }
-// }
-
-const inc = () => ({type: 'INC'});
-const dec = () => ({type: 'DEC'});
-const rnd = (value) => ({type: 'RND', value});
-
-const store = createStore(reduser);
-const {dispatch} = store;
-const incDispatch = () => dispatch(inc());
-const decDispatch = () => dispatch(dec());
-const rndDispatch = (value) => dispatch(rnd(value));
-
-store.subscribe(() => {
-  console.log(store.getState());
-});
-
-// console.log(store.getState());
-// store.dispatch({type: 'INC'});
-// console.log(store.getState());
-// store.dispatch({type: 'INC'});
-// console.log(store.getState());
-// store.dispatch({type: 'INC'});
-// console.log(store.getState());
-
-document.getElementById('inc').addEventListener('click', incDispatch)
-
-document.getElementById('dec').addEventListener('click', decDispatch)
-
-document.getElementById('rnd').addEventListener('click', () => {
-  const value = Math.floor(Math.random() * 10);
-  rndDispatch(value)
-})
-
-const update = () =>{
-  document.getElementById('counter').textContent = store.getState();
-}
-
-store.subscribe(update);
-
-// store.subscribe(() => {
-//   console.log(store.getState());
-// });
-
-// let state = reduser(undefined, {});
-
-// state = reduser(state, {type: 'INC'});
-// console.log(state);
-
-// state = reduser(state, {type: 'INC'});
-// console.log(state);
+ReactDOM.render(
+    <Provider store = {store}> 
+        <App/>
+    </Provider>
+    , document.getElementById('root')
+);
