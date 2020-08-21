@@ -14,7 +14,7 @@ const App = ({RestoService}) => {
             <Switch>
                 <Route path='/' exact component={MainPage}/>
                 <Route path='/cart'  component={CartPage}/>
-                <Route  exact component={MainPage}/>
+                <Route path = '/:id' component ={ItemPage}/>
             </Switch>
         </div>
     )
